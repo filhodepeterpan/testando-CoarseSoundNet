@@ -1,7 +1,9 @@
 # Testando o CoarseSoundNet
 
 ## Introdução
-Estou desenvolvendo uma pesquisa
+Estou desenvolvendo uma pesquisa relacionada a alguns conceitos como paisagem sonora e bioacústica com machine learning na identificação de aves. Esse repositório faz parte desse projeto e utiliza um modelo pronto chamado **CoarseSoundNet** para realizar testes.
+
+O objetivo é verificar a acurácia do modelo introduzindo diversos áudios para análise e observar como o modelo se comporta com diferentes sons de geofonia, biofonia e antropofonia.
 
 ## Dicionário de Arquivos de Áudio
 
@@ -17,36 +19,40 @@ Estou desenvolvendo uma pesquisa
 
 ## Dependências
 **Criação do ambiente virtual**
-```
+```powershell
 py -3.12 -m venv .venv
 ```
 
 **Ativação do ambiente virtual**
-```
+```powershell
 .venv\Scripts\activate
 ```
 
 **Instalação de Dependências**
-```
+```powershell
 pip install "autrainer==0.6.0" "auglib>=1.0.4" "cowsay>=6.1" "hear21passt>=0.0.26" "pydub>=0.25.1"
 ```
 
-## Código de Inferência
+## Comando de Inferência
 
-```
+```powershell
 autrainer inference hf:HearTheSpecies/CoarseSoundNet -r data output -w 5 -s 5 -sr 48000 --trust-remote
 ```
 
-## Resultados
-- **A01.wav** - ACERTOU. Maioria: Geofonia. Antropofonia apareceu como falso positivo nos primeiros 10 s.
-- **A02.wav** - ACERTOU. Detectou Biofonia e Antropofonia, mas também Geofonia (falso positivo). Apenas 1 janela de 5 s analisada.
-- **A03.wav** - ACERTOU. Biofonia em todas as janelas; Geofonia extra (falso positivo) a partir de ~40 s.
-- **A04.wav** - INCERTO. Retornou as três classes na única janela analisada, sem distinguir a Antropofonia.
-- **A05.wav** - ACERTOU. Geofonia em todas as janelas; Antropofonia extra (falso positivo) até ~25 s.
-- **A06.wav** - ACERTOU. Apenas Geofonia, em todas as janelas.
-- **A07.wav** - ERROU. Maioria: Geofonia. Biofonia só na primeira janela (0-5 s).
-- **A08.wav** - ERROU. Maioria: Geofonia. Antropofonia só na janela de 5-10 s.
-- **A09.wav** - ACERTOU. Maioria: Antropofonia, com Geofonia extra (falso positivo). Biofonia pontual em duas janelas.
+### Resultados
+
+| Arquivo | Resultado | Detalhes |
+| :--- | :---: | :--- |
+| **A01.wav** | ACERTOU | Maioria: Geofonia. Antropofonia apareceu como falso positivo nos primeiros 10 s. |
+| **A02.wav** | ACERTOU | Detectou Biofonia e Antropofonia, mas também Geofonia (falso positivo). Apenas 1 janela de 5 s analisada. |
+| **A03.wav** | ACERTOU | Biofonia em todas as janelas; Geofonia extra (falso positivo) a partir de ~40 s. |
+| **A04.wav** | INCERTO | Retornou as três classes na única janela analisada, sem distinguir a Antropofonia. |
+| **A05.wav** | ACERTOU | Geofonia em todas as janelas; Antropofonia extra (falso positivo) até ~25 s. |
+| **A06.wav** | ACERTOU | Apenas Geofonia, em todas as janelas. |
+| **A07.wav** | ERROU | Maioria: Geofonia. Biofonia só na primeira janela (0-5 s). |
+| **A08.wav** | ERROU | Maioria: Geofonia. Antropofonia só na janela de 5-10 s. |
+| **A09.wav** | ACERTOU | Maioria: Antropofonia, com Geofonia extra (falso positivo). Biofonia pontual em duas janelas. |
+
 
 > Janelas `.nan` no `results.yaml` indicam trechos sem áudio (arquivo mais curto que 90 s).
 
@@ -59,7 +65,7 @@ https://github.com/CHI-TUM/CoarseSoundNet
 ```
 
 **Artigo**
-```
+```bibtex
 @article{Gebhard26-CBA,
   title = {CoarseSoundNet: Building a reliable model for ecological soundscape analysis},
   journal = {Ecological Informatics},
