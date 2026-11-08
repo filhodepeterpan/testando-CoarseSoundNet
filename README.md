@@ -41,7 +41,7 @@ autrainer inference hf:HearTheSpecies/CoarseSoundNet -r data output -w 5 -s 5 -s
 
 ### Resultados
 
-| Arquivo | Resultado | Detalhes |
+| ARQUIVO | RESULTADO | DETALHES |
 | :--- | :---: | :--- |
 | **A01.wav** | ACERTOU | Maioria: Geofonia. Antropofonia apareceu como falso positivo nos primeiros 10 s. |
 | **A02.wav** | ACERTOU | Detectou Biofonia e Antropofonia, mas também Geofonia (falso positivo). Apenas 1 janela de 5 s analisada. |
