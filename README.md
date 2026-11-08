@@ -39,7 +39,7 @@ pip install "autrainer==0.6.0" "auglib>=1.0.4" "cowsay>=6.1" "hear21passt>=0.0.2
 autrainer inference hf:HearTheSpecies/CoarseSoundNet -r data output -w 5 -s 5 -sr 48000 --trust-remote
 ```
 
-### Resultados
+## Resultados
 
 | ARQUIVO | RESULTADO | DETALHES |
 | :--- | :---: | :--- |
