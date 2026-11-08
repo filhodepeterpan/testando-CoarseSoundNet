@@ -41,6 +41,8 @@ autrainer inference hf:HearTheSpecies/CoarseSoundNet -r data output -w 5 -s 5 -s
 
 ## Resultados
 
+**INFERÊNCIA 01**
+
 | ARQUIVO | RESULTADO | DETALHES |
 | :--- | :---: | :--- |
 | **A01.wav** | ACERTOU | Maioria: Geofonia. Antropofonia apareceu como falso positivo nos primeiros 10 s. |
@@ -52,6 +54,15 @@ autrainer inference hf:HearTheSpecies/CoarseSoundNet -r data output -w 5 -s 5 -s
 | **A07.wav** | ERROU | Maioria: Geofonia. Biofonia só na primeira janela (0-5 s). |
 | **A08.wav** | ERROU | Maioria: Geofonia. Antropofonia só na janela de 5-10 s. |
 | **A09.wav** | ACERTOU | Maioria: Antropofonia, com Geofonia extra (falso positivo). Biofonia pontual em duas janelas. |
+
+O ponto mais crítico foi a Geofonia aparecer em praticamente todos os arquivos, inclusive onde não existia (A02, A03, A04, A09) e ainda ser colocada como a decisão final em A07 (morcego) e A08 (fritura), que eram Biofonia e Antropofonia respectivamente. 
+
+Nesses dois casos a classe correta surgiu em apenas uma janela de 5 s e foi diluída pela maioria. A segunda grande confusão foi a Antropofonia como falso positivo em sons naturais: ela apareceu nos primeiros 10 s da chuva (A01) e em boa parte da ventania (A05).
+
+O pneu (A04), assim como eu esperva por já ter lido sobre em alguns artigos, gerou o resultado mais incerto, com as três classes ativadas ao mesmo tempo, sem discriminar nada.
+
+Os melhores desempenhos vieram de sons longos e estáveis, como a geofonia do mar (A06) e a biofonia do tapicuru (A03), em que a classe correta foi consistente do início ao fim. 
+
 
 
 > Janelas `.nan` no `results.yaml` indicam trechos sem áudio (arquivo mais curto que 90 s).
