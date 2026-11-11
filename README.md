@@ -55,7 +55,7 @@ autrainer inference hf:HearTheSpecies/CoarseSoundNet -r data output -w 5 -s 5 -s
 | **A08.wav** | ERROU | Maioria: Geofonia. Antropofonia só na janela de 5-10 s. |
 | **A09.wav** | ACERTOU | Maioria: Antropofonia, com Geofonia extra (falso positivo). Biofonia pontual em duas janelas. |
 
-**Conclusão**
+**Conclusão:**
 O ponto mais crítico foi a Geofonia aparecer em praticamente todos os arquivos, inclusive onde não existia (A02, A03, A04, A09) e ainda ser colocada como a decisão final em A07 (morcego) e A08 (fritura), que eram Biofonia e Antropofonia respectivamente. 
 
 Nesses dois casos a classe correta surgiu em apenas uma janela de 5 s e foi diluída pela maioria. A segunda grande confusão foi a Antropofonia como falso positivo em sons naturais: ela apareceu nos primeiros 10 s da chuva (A01) e em boa parte da ventania (A05).
